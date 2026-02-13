@@ -1,4 +1,4 @@
-import gui.loginScreen;
+import GUI.loginScreen;
 import javax.swing.*;
 import java.awt.*;
 
