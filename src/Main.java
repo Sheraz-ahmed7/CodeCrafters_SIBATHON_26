@@ -1,4 +1,4 @@
-import gui.LoginScreen;
+import gui.loginScreen;
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,10 +7,10 @@ public class Main {
         try {
             // Set system look and feel
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            
+
             // Set default font for better UI
-            javax.swing.plaf.FontUIResource fontUIResource = 
-                new javax.swing.plaf.FontUIResource("Arial", java.awt.Font.PLAIN, 12);
+            javax.swing.plaf.FontUIResource fontUIResource = new javax.swing.plaf.FontUIResource("Arial",
+                    java.awt.Font.PLAIN, 12);
             java.util.Enumeration keys = UIManager.getDefaults().keys();
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
@@ -19,14 +19,14 @@ public class Main {
                     UIManager.put(key, fontUIResource);
                 }
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         // Launch login screen on Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
-            new LoginScreen().setVisible(true);
+            new loginScreen().setVisible(true);
         });
     }
 }
