@@ -23,7 +23,7 @@ public class LoginScreen extends JFrame {
         setTitle("Smart Energy Optimization System - Login");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Center on screen
+        setLocationRelativeTo(null);
         setResizable(false);
         
         // Main panel with padding
@@ -66,42 +66,19 @@ public class LoginScreen extends JFrame {
         loginButton = new JButton("Login");
         cancelButton = new JButton("Cancel");
         
-        // Style buttons
         loginButton.setBackground(new Color(0, 153, 76));
         loginButton.setForeground(Color.WHITE);
-        loginButton.setFocusPainted(false);
-        
         cancelButton.setBackground(new Color(204, 0, 0));
         cancelButton.setForeground(Color.WHITE);
-        cancelButton.setFocusPainted(false);
         
         buttonPanel.add(loginButton);
         buttonPanel.add(cancelButton);
         
-        // Add action listeners
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performLogin();
-            }
-        });
+        loginButton.addActionListener(e -> performLogin());
+        cancelButton.addActionListener(e -> System.exit(0));
         
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        passwordField.addActionListener(e -> performLogin());
         
-        // Enter key press for password field
-        passwordField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performLogin();
-            }
-        });
-        
-        // Add all panels to main panel
         mainPanel.add(titlePanel, BorderLayout.NORTH);
         mainPanel.add(formPanel, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -121,10 +98,8 @@ public class LoginScreen extends JFrame {
             return;
         }
         
-        // Disable login button during validation
         loginButton.setEnabled(false);
         
-        // Perform login in background thread
         SwingWorker<User, Void> worker = new SwingWorker<User, Void>() {
             @Override
             protected User doInBackground() throws Exception {
@@ -136,11 +111,9 @@ public class LoginScreen extends JFrame {
                 try {
                     User user = get();
                     if (user != null) {
-                        // Login successful
-                        dispose(); // Close login screen
+                        dispose();
                         new Dashboard(user).setVisible(true);
                     } else {
-                        // Login failed
                         JOptionPane.showMessageDialog(LoginScreen.this,
                             "Invalid username or password",
                             "Login Failed",

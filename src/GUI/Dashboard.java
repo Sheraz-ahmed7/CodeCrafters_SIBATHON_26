@@ -1,14 +1,13 @@
 package gui;
 
 import models.User;
-import database.Queries;
 import models.Department;
+import database.Queries;
 import utils.EnergyCalculator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class Dashboard extends JFrame {
@@ -17,7 +16,6 @@ public class Dashboard extends JFrame {
     private JLabel welcomeLabel;
     private JLabel energySummaryLabel;
     
-    // Panels
     private DepartmentPanel departmentPanel;
     private DeviceEntryPanel deviceEntryPanel;
     private SolarSimulationPanel solarPanel;
@@ -36,27 +34,20 @@ public class Dashboard extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         
-        // Create menu bar
         setJMenuBar(createMenuBar());
-        
-        // Main layout
         setLayout(new BorderLayout());
         
-        // Top panel with welcome message and logout
         add(createTopPanel(), BorderLayout.NORTH);
         
-        // Center panel with tabs
         tabbedPane = new JTabbedPane();
         tabbedPane.setFont(new Font("Arial", Font.PLAIN, 14));
         
-        // Initialize panels
         departmentPanel = new DepartmentPanel(currentUser);
         deviceEntryPanel = new DeviceEntryPanel(currentUser);
         solarPanel = new SolarSimulationPanel(currentUser);
         reportsPanel = new ReportsPanel(currentUser);
         chartsPanel = new ChartsPanel(currentUser);
         
-        // Add tabs
         tabbedPane.addTab("Dashboard Home", createHomePanel());
         tabbedPane.addTab("Department Management", departmentPanel);
         tabbedPane.addTab("Device Entry", deviceEntryPanel);
@@ -65,15 +56,12 @@ public class Dashboard extends JFrame {
         tabbedPane.addTab("Charts & Analytics", chartsPanel);
         
         add(tabbedPane, BorderLayout.CENTER);
-        
-        // Status bar at bottom
         add(createStatusBar(), BorderLayout.SOUTH);
     }
     
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         
-        // File menu
         JMenu fileMenu = new JMenu("File");
         JMenuItem logoutItem = new JMenuItem("Logout");
         JMenuItem exitItem = new JMenuItem("Exit");
@@ -85,7 +73,6 @@ public class Dashboard extends JFrame {
         fileMenu.addSeparator();
         fileMenu.add(exitItem);
         
-        // Tools menu
         JMenu toolsMenu = new JMenu("Tools");
         JMenuItem calculateItem = new JMenuItem("Energy Calculator");
         JMenuItem exportItem = new JMenuItem("Export Report");
@@ -96,7 +83,6 @@ public class Dashboard extends JFrame {
         toolsMenu.add(calculateItem);
         toolsMenu.add(exportItem);
         
-        // Help menu
         JMenu helpMenu = new JMenu("Help");
         JMenuItem aboutItem = new JMenuItem("About");
         aboutItem.addActionListener(e -> showAboutDialog());
@@ -114,17 +100,14 @@ public class Dashboard extends JFrame {
         topPanel.setBackground(new Color(51, 51, 51));
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        // Welcome label
         String role = currentUser.isAdmin() ? "Administrator" : "Department User";
         welcomeLabel = new JLabel("Welcome, " + currentUser.getUsername() + " (" + role + ")");
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 16));
         
-        // Logout button
         JButton logoutBtn = new JButton("Logout");
         logoutBtn.setBackground(new Color(204, 0, 0));
         logoutBtn.setForeground(Color.WHITE);
-        logoutBtn.setFocusPainted(false);
         logoutBtn.addActionListener(e -> logout());
         
         topPanel.add(welcomeLabel, BorderLayout.WEST);
@@ -140,7 +123,6 @@ public class Dashboard extends JFrame {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.BOTH;
         
-        // Welcome card
         JPanel welcomeCard = createInfoCard(
             "Welcome to Smart Energy System",
             "Monitor, analyze and optimize energy consumption",
@@ -154,7 +136,6 @@ public class Dashboard extends JFrame {
         gbc.weighty = 0.3;
         homePanel.add(welcomeCard, gbc);
         
-        // Quick stats
         JPanel statsCard = createStatsCard();
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -163,13 +144,11 @@ public class Dashboard extends JFrame {
         gbc.weighty = 0.35;
         homePanel.add(statsCard, gbc);
         
-        // Quick actions
         JPanel actionsCard = createActionsCard();
         gbc.gridx = 1;
         gbc.gridy = 1;
         homePanel.add(actionsCard, gbc);
         
-        // Tips panel
         JPanel tipsCard = createTipsCard();
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -281,7 +260,6 @@ public class Dashboard extends JFrame {
     }
     
     private void loadDashboardData() {
-        // Load energy summary
         try {
             int deptId = currentUser.isAdmin() ? 1 : currentUser.getDepartmentId();
             double totalKWh = Queries.getTotalMonthlyKWhByDepartment(deptId);

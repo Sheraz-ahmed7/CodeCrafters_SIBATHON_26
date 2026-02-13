@@ -1,6 +1,6 @@
 import gui.LoginScreen;
 import javax.swing.*;
-import java.awt.*;
+import java.util.Enumeration;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Main {
             // Set default font for better UI
             javax.swing.plaf.FontUIResource fontUIResource = 
                 new javax.swing.plaf.FontUIResource("Arial", java.awt.Font.PLAIN, 12);
-            java.util.Enumeration keys = UIManager.getDefaults().keys();
+            Enumeration keys = UIManager.getDefaults().keys();
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
                 Object value = UIManager.get(key);
