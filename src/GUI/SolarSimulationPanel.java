@@ -1,7 +1,7 @@
 package GUI;
 
-import Models.User;           // Changed from models to Models
-import Models.Department;      // Changed from models to Models
+import Models.User; // Changed from models to Models
+import Models.Department; // Changed from models to Models
 import database.Queries;
 import utils.EnergyCalculator;
 import utils.SolarSimulator;
@@ -40,9 +40,8 @@ public class SolarSimulationPanel extends JPanel {
     private JPanel createInputPanel() {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBorder(BorderFactory.createTitledBorder(
-            BorderFactory.createLineBorder(new Color(0, 102, 204), 2),
-            "Solar Panel Simulation"
-        ));
+                BorderFactory.createLineBorder(new Color(0, 102, 204), 2),
+                "Solar Panel Simulation"));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -76,7 +75,7 @@ public class SolarSimulationPanel extends JPanel {
         gbc.gridx = 2;
         calculateButton = new JButton("Calculate Solar ROI");
         calculateButton.setBackground(new Color(255, 153, 0));
-        calculateButton.setForeground(Color.WHITE);
+        calculateButton.setForeground(Color.BLACK);
         calculateButton.setFont(new Font("Arial", Font.BOLD, 14));
         calculateButton.setFocusPainted(false);
         calculateButton.addActionListener(e -> calculateSolar());
@@ -155,9 +154,9 @@ public class SolarSimulationPanel extends JPanel {
         panel.setBorder(BorderFactory.createTitledBorder("Solar Energy Facts"));
 
         String[] facts = {
-            "<html><b>Peak Sun Hours:</b> Pakistan receives 5-7 hours of peak sunlight daily</html>",
-            "<html><b>ROI:</b> Solar panels typically pay for themselves in 3-7 years</html>",
-            "<html><b>Lifespan:</b> Modern solar panels last 25-30 years with minimal maintenance</html>"
+                "<html><b>Peak Sun Hours:</b> Pakistan receives 5-7 hours of peak sunlight daily</html>",
+                "<html><b>ROI:</b> Solar panels typically pay for themselves in 3-7 years</html>",
+                "<html><b>Lifespan:</b> Modern solar panels last 25-30 years with minimal maintenance</html>"
         };
 
         for (String fact : facts) {
@@ -210,9 +209,9 @@ public class SolarSimulationPanel extends JPanel {
 
             if (monthlyKWh <= 0) {
                 JOptionPane.showMessageDialog(this,
-                    "Please enter valid monthly consumption",
-                    "Invalid Input",
-                    JOptionPane.WARNING_MESSAGE);
+                        "Please enter valid monthly consumption",
+                        "Invalid Input",
+                        JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -237,9 +236,9 @@ public class SolarSimulationPanel extends JPanel {
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
-                "Invalid consumption value",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+                    "Invalid consumption value",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 

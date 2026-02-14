@@ -94,7 +94,7 @@ public class ReportsPanel extends JPanel {
         gbc.gridx = 2;
         generateButton = new JButton("Generate Report");
         generateButton.setBackground(new Color(0, 102, 204));
-        generateButton.setForeground(Color.WHITE);
+        generateButton.setForeground(Color.BLACK);
         generateButton.setFont(new Font("Arial", Font.BOLD, 12));
         generateButton.setFocusPainted(false);
         generateButton.addActionListener(e -> generateReport());
@@ -209,7 +209,7 @@ public class ReportsPanel extends JPanel {
                 report = generateCostAnalysis(selectedDept);
                 break;
             case "Efficiency Ranking":
-                report = generateEfficiencyRanking();
+                report = generatgit eEfficiencyRanking();
                 break;
         }
 
