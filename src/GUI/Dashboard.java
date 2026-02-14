@@ -101,13 +101,13 @@ public class Dashboard extends JFrame {
 
         String role = currentUser.isAdmin() ? "Administrator" : "Department User";
         welcomeLabel = new JLabel("Welcome, " + currentUser.getUsername() + " (" + role + ")");
-        welcomeLabel.setForeground(Color.WHITE);
+        welcomeLabel.setForeground(Color.BLACK);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 16));
 
         JButton logoutBtn = new JButton("Logout");
         // Logout button - Dark Red
         logoutBtn.setBackground(new Color(200, 0, 0));
-        logoutBtn.setForeground(Color.WHITE);
+        logoutBtn.setForeground(Color.BLACK);
         logoutBtn.setFont(new Font("Arial", Font.BOLD, 12));
         logoutBtn.setFocusPainted(false);
         logoutBtn.setBorder(BorderFactory.createLineBorder(new Color(100, 0, 0), 1));
@@ -123,7 +123,7 @@ public class Dashboard extends JFrame {
 
     private JPanel createHomePanel() {
         JPanel homePanel = new JPanel(new GridBagLayout());
-        homePanel.setBackground(Color.WHITE);
+        homePanel.setBackground(Color.BLACK);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.BOTH;
@@ -131,8 +131,7 @@ public class Dashboard extends JFrame {
         JPanel welcomeCard = createInfoCard(
                 "Welcome to Smart Energy System",
                 "Monitor, analyze and optimize energy consumption",
-                new Color(0, 102, 204)
-        );
+                new Color(0, 102, 204));
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -171,12 +170,12 @@ public class Dashboard extends JFrame {
 
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setForeground(Color.BLACK);
         titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JLabel messageLabel = new JLabel(message);
         messageLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        messageLabel.setForeground(Color.WHITE);
+        messageLabel.setForeground(Color.BLACK);
         messageLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
         panel.add(titleLabel, BorderLayout.NORTH);
@@ -189,8 +188,7 @@ public class Dashboard extends JFrame {
         JPanel panel = new JPanel(new GridLayout(3, 1, 5, 5));
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.GRAY),
-                "Quick Statistics"
-        ));
+                "Quick Statistics"));
 
         energySummaryLabel = new JLabel("Loading...");
         energySummaryLabel.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -206,8 +204,7 @@ public class Dashboard extends JFrame {
         JPanel panel = new JPanel(new GridLayout(3, 1, 5, 5));
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.GRAY),
-                "Quick Actions"
-        ));
+                "Quick Actions"));
 
         // ✅ FORCED BUTTON COLORS - VISIBLE
         JButton addDeviceBtn = new JButton("+ Add New Device");
@@ -237,7 +234,7 @@ public class Dashboard extends JFrame {
     // Helper method for forced button styling
     private void styleForcedButton(JButton button, Color bgColor) {
         button.setBackground(bgColor);
-        button.setForeground(Color.WHITE);
+        button.setForeground(Color.BLACK);
         button.setFont(new Font("Arial", Font.BOLD, 14));
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createLineBorder(bgColor.darker(), 1));
@@ -249,8 +246,7 @@ public class Dashboard extends JFrame {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(Color.GRAY),
-                "Energy Saving Tips"
-        ));
+                "Energy Saving Tips"));
 
         String[] tips = {
                 "• Turn off lights when leaving the room",
