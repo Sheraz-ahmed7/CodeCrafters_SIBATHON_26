@@ -1,19 +1,16 @@
 package GUI;
 
-import Models.User; // Changed from models to Models
 import Models.Department; // Changed from models to Models
 import Models.Device; // Changed from models to Models
+import Models.User; // Changed from models to Models
 import database.Queries;
-import utils.EnergyCalculator;
-import utils.CarbonCalculator;
-import utils.ReportGenerator;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import utils.EnergyCalculator;
 
 public class ReportsPanel extends JPanel {
     private User currentUser;
@@ -209,7 +206,7 @@ public class ReportsPanel extends JPanel {
                 report = generateCostAnalysis(selectedDept);
                 break;
             case "Efficiency Ranking":
-                report = generatgit eEfficiencyRanking();
+                report = generateEfficiencyRanking();  // ✅ CORRECT
                 break;
         }
 
