@@ -76,7 +76,7 @@ public class ChartsPanel extends JPanel {
 
         refreshButton = new JButton("Refresh Charts");
         refreshButton.setBackground(new Color(0, 102, 204));
-        refreshButton.setForeground(Color.WHITE);
+        refreshButton.setForeground(Color.BLACK);
         refreshButton.setFocusPainted(false);
         refreshButton.addActionListener(e -> loadCharts());
         panel.add(refreshButton);
@@ -239,7 +239,7 @@ public class ChartsPanel extends JPanel {
                     false);
 
             CategoryPlot plot = chart.getCategoryPlot();
-            plot.setBackgroundPaint(Color.WHITE);
+            plot.setBackgroundPaint(Color.BLACK);
             plot.setRangeGridlinePaint(Color.LIGHT_GRAY);
 
             BarRenderer renderer = (BarRenderer) plot.getRenderer();
@@ -318,7 +318,7 @@ public class ChartsPanel extends JPanel {
                     false);
 
             CategoryPlot plot = chart.getCategoryPlot();
-            plot.setBackgroundPaint(Color.WHITE);
+            plot.setBackgroundPaint(Color.BLACK);
             plot.setRangeGridlinePaint(Color.LIGHT_GRAY);
 
             BarRenderer renderer = (BarRenderer) plot.getRenderer();
@@ -359,7 +359,7 @@ public class ChartsPanel extends JPanel {
                     false);
 
             CategoryPlot plot = chart.getCategoryPlot();
-            plot.setBackgroundPaint(Color.WHITE);
+            plot.setBackgroundPaint(Color.BLACK);
             plot.setRangeGridlinePaint(Color.LIGHT_GRAY);
 
             LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();

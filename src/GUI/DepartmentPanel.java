@@ -140,7 +140,7 @@ public class DepartmentPanel extends JPanel {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Department List"));
 
-        String[] columns = {"ID", "Department Name", "Floor", "Contact", "Monthly kWh", "Monthly Cost"};
+        String[] columns = { "ID", "Department Name", "Floor", "Contact", "Monthly kWh", "Monthly Cost" };
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -165,7 +165,7 @@ public class DepartmentPanel extends JPanel {
     // ✅ Helper method for button styling
     private void styleButton(JButton button, Color bgColor) {
         button.setBackground(bgColor);
-        button.setForeground(Color.WHITE);
+        button.setForeground(Color.BLACK);
         button.setFont(new Font("Segoe UI", Font.BOLD, 12));
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
@@ -236,7 +236,8 @@ public class DepartmentPanel extends JPanel {
     }
 
     private void addDepartment() {
-        if (!validateForm()) return;
+        if (!validateForm())
+            return;
 
         try {
             Department dept = new Department();
@@ -272,7 +273,8 @@ public class DepartmentPanel extends JPanel {
             return;
         }
 
-        if (!validateForm()) return;
+        if (!validateForm())
+            return;
 
         try {
             selected.setDeptName(nameField.getText().trim());

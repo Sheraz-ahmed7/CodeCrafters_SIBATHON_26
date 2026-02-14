@@ -139,7 +139,7 @@ public class DeviceEntryPanel extends JPanel {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Device List"));
 
-        String[] columns = {"ID", "Device Name", "Wattage", "Qty", "Hours/Day", "Daily kWh", "Monthly kWh"};
+        String[] columns = { "ID", "Device Name", "Wattage", "Qty", "Hours/Day", "Daily kWh", "Monthly kWh" };
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -169,12 +169,12 @@ public class DeviceEntryPanel extends JPanel {
         panel.add(new JLabel("Total Monthly kWh:", SwingConstants.RIGHT));
         totalKWhLabel = new JLabel("0.00 kWh", SwingConstants.LEFT);
         totalKWhLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        totalKWhLabel.setForeground(new Color(33, 150, 243));  // Professional Blue
+        totalKWhLabel.setForeground(new Color(33, 150, 243)); // Professional Blue
 
         panel.add(new JLabel("Monthly Cost:", SwingConstants.RIGHT));
         totalCostLabel = new JLabel("Rs. 0.00", SwingConstants.LEFT);
         totalCostLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        totalCostLabel.setForeground(new Color(76, 175, 80));  // Professional Green
+        totalCostLabel.setForeground(new Color(76, 175, 80)); // Professional Green
 
         panel.add(totalKWhLabel);
         panel.add(totalCostLabel);
@@ -182,12 +182,12 @@ public class DeviceEntryPanel extends JPanel {
         panel.add(new JLabel("Carbon Footprint:", SwingConstants.RIGHT));
         carbonLabel = new JLabel("0.00 kg CO2", SwingConstants.LEFT);
         carbonLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        carbonLabel.setForeground(new Color(244, 67, 54));  // Professional Red
+        carbonLabel.setForeground(new Color(244, 67, 54)); // Professional Red
 
         panel.add(new JLabel("Trees Needed:", SwingConstants.RIGHT));
         treesLabel = new JLabel("0 trees", SwingConstants.LEFT);
         treesLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        treesLabel.setForeground(new Color(255, 152, 0));  // Professional Orange
+        treesLabel.setForeground(new Color(255, 152, 0)); // Professional Orange
 
         panel.add(carbonLabel);
         panel.add(treesLabel);
@@ -198,7 +198,7 @@ public class DeviceEntryPanel extends JPanel {
     // ✅ Helper method for button styling
     private void styleButton(JButton button, Color bgColor) {
         button.setBackground(bgColor);
-        button.setForeground(Color.WHITE);
+        button.setForeground(Color.BLACK);
         button.setFont(new Font("Segoe UI", Font.BOLD, 12));
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
@@ -226,7 +226,8 @@ public class DeviceEntryPanel extends JPanel {
 
     private void loadDevices() {
         Department selectedDept = (Department) departmentCombo.getSelectedItem();
-        if (selectedDept == null) return;
+        if (selectedDept == null)
+            return;
 
         List<Device> devices = Queries.getDevicesByDepartment(selectedDept.getDeptId());
 
@@ -290,7 +291,8 @@ public class DeviceEntryPanel extends JPanel {
     }
 
     private void addDevice() {
-        if (!validateForm()) return;
+        if (!validateForm())
+            return;
 
         try {
             Department selectedDept = (Department) departmentCombo.getSelectedItem();
@@ -344,7 +346,8 @@ public class DeviceEntryPanel extends JPanel {
             return;
         }
 
-        if (!validateForm()) return;
+        if (!validateForm())
+            return;
 
         try {
             int deviceId = (int) tableModel.getValueAt(selectedRow, 0);
@@ -437,7 +440,8 @@ public class DeviceEntryPanel extends JPanel {
 
         try {
             int wattage = Integer.parseInt(wattageField.getText().trim());
-            if (wattage <= 0) throw new NumberFormatException();
+            if (wattage <= 0)
+                throw new NumberFormatException();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
                     "Please enter a valid wattage",
@@ -449,7 +453,8 @@ public class DeviceEntryPanel extends JPanel {
 
         try {
             int quantity = Integer.parseInt(quantityField.getText().trim());
-            if (quantity <= 0) throw new NumberFormatException();
+            if (quantity <= 0)
+                throw new NumberFormatException();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
                     "Please enter a valid quantity",
@@ -461,7 +466,8 @@ public class DeviceEntryPanel extends JPanel {
 
         try {
             double hours = Double.parseDouble(hoursField.getText().trim());
-            if (hours < 0 || hours > 24) throw new NumberFormatException();
+            if (hours < 0 || hours > 24)
+                throw new NumberFormatException();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
                     "Please enter valid hours (0-24)",
