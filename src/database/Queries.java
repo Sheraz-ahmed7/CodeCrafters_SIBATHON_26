@@ -37,17 +37,22 @@ public class Queries {
 
     public static List<Department> getAllDepartments() {
         List<Department> departments = new ArrayList<>();
+        // Saare departments, name ke hisaab se sorted
         String query = "SELECT * FROM departments ORDER BY dept_name";
 
         try (Statement stmt = DBConnection.getConnection().createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
-            while (rs.next()) {
+            while (rs.next()) {    // Har row ke liye
                 Department dept = new Department();
+
+                // Result se values lo aur set karo
                 dept.setDeptId(rs.getInt("dept_id"));
                 dept.setDeptName(rs.getString("dept_name"));
                 dept.setFloorNumber(rs.getInt("floor_number"));
                 dept.setContactNumber(rs.getString("contact_number"));
+
+                // List mein add karo
                 departments.add(dept);
             }
         } catch (SQLException e) {
