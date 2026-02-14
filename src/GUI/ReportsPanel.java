@@ -1,15 +1,16 @@
-package gui;
+package GUI;
 
-import models.User;
-import models.Department;
+import Models.User;           // Changed from models to Models
+import Models.Department;      // Changed from models to Models
+import Models.Device;          // Changed from models to Models
 import database.Queries;
 import utils.EnergyCalculator;
+import utils.CarbonCalculator;
+import utils.ReportGenerator;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -24,7 +25,7 @@ public class ReportsPanel extends JPanel {
     private JTable summaryTable;
     private DefaultTableModel tableModel;
     private JLabel generatedDateLabel;
-    
+
     public ReportsPanel(User user) {
         this.currentUser = user;
         initializeUI();

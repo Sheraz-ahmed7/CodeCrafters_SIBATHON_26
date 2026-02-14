@@ -1,16 +1,15 @@
-import gui.LoginScreen;
+import GUI.LoginScreen;
+
 import javax.swing.*;
 import java.util.Enumeration;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            // Set system look and feel
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            
-            // Set default font for better UI
-            javax.swing.plaf.FontUIResource fontUIResource = 
-                new javax.swing.plaf.FontUIResource("Arial", java.awt.Font.PLAIN, 12);
+
+            javax.swing.plaf.FontUIResource fontUIResource =
+                    new javax.swing.plaf.FontUIResource("Arial", java.awt.Font.PLAIN, 12);
             Enumeration keys = UIManager.getDefaults().keys();
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
@@ -19,12 +18,11 @@ public class Main {
                     UIManager.put(key, fontUIResource);
                 }
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        // Launch login screen on Event Dispatch Thread
+
         SwingUtilities.invokeLater(() -> {
             new LoginScreen().setVisible(true);
         });
