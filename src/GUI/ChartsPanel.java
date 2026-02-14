@@ -24,7 +24,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.util.List;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -61,8 +61,7 @@ public class ChartsPanel extends JPanel {
                 "Chart Controls",
                 TitledBorder.LEFT,
                 TitledBorder.TOP,
-                new Font("Arial", Font.BOLD, 12)
-        ));
+                new Font("Arial", Font.BOLD, 12)));
 
         panel.add(new JLabel("Department:"));
         departmentCombo = new JComboBox<>();
@@ -70,7 +69,7 @@ public class ChartsPanel extends JPanel {
         panel.add(departmentCombo);
 
         panel.add(new JLabel("Time Range:"));
-        String[] ranges = {"Last 7 Days", "Last 30 Days", "Last 3 Months", "Last Year"};
+        String[] ranges = { "Last 7 Days", "Last 30 Days", "Last 3 Months", "Last Year" };
         timeRangeCombo = new JComboBox<>(ranges);
         timeRangeCombo.setPreferredSize(new Dimension(120, 25));
         panel.add(timeRangeCombo);
@@ -136,8 +135,7 @@ public class ChartsPanel extends JPanel {
                     PlotOrientation.VERTICAL,
                     true,
                     true,
-                    false
-            );
+                    false);
 
             CategoryPlot plot = chart.getCategoryPlot();
             plot.setBackgroundPaint(Color.WHITE);
@@ -161,7 +159,7 @@ public class ChartsPanel extends JPanel {
 
     private JPanel createDeviceChart() {
         try {
-            DefaultPieDataset dataset = new DefaultPieDataset();
+            DefaultPieDataset<String> dataset = new DefaultPieDataset<>();
 
             Department selected = (Department) departmentCombo.getSelectedItem();
             List<Department> departments;
@@ -190,18 +188,21 @@ public class ChartsPanel extends JPanel {
                 }
             }
 
-            if (acCount > 0) dataset.setValue("ACs", acCount);
-            if (lightCount > 0) dataset.setValue("Lights", lightCount);
-            if (computerCount > 0) dataset.setValue("Computers", computerCount);
-            if (otherCount > 0) dataset.setValue("Other", otherCount);
+            if (acCount > 0)
+                dataset.setValue("ACs", acCount);
+            if (lightCount > 0)
+                dataset.setValue("Lights", lightCount);
+            if (computerCount > 0)
+                dataset.setValue("Computers", computerCount);
+            if (otherCount > 0)
+                dataset.setValue("Other", otherCount);
 
             JFreeChart chart = ChartFactory.createPieChart(
                     "Device Distribution",
                     dataset,
                     true,
                     true,
-                    false
-            );
+                    false);
 
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setPreferredSize(new Dimension(800, 500));
@@ -235,8 +236,7 @@ public class ChartsPanel extends JPanel {
                     PlotOrientation.VERTICAL,
                     true,
                     true,
-                    false
-            );
+                    false);
 
             CategoryPlot plot = chart.getCategoryPlot();
             plot.setBackgroundPaint(Color.WHITE);
@@ -281,8 +281,7 @@ public class ChartsPanel extends JPanel {
                     dataset,
                     true,
                     true,
-                    false
-            );
+                    false);
 
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setPreferredSize(new Dimension(800, 500));
@@ -316,8 +315,7 @@ public class ChartsPanel extends JPanel {
                     PlotOrientation.VERTICAL,
                     true,
                     true,
-                    false
-            );
+                    false);
 
             CategoryPlot plot = chart.getCategoryPlot();
             plot.setBackgroundPaint(Color.WHITE);
@@ -358,8 +356,7 @@ public class ChartsPanel extends JPanel {
                     PlotOrientation.VERTICAL,
                     true,
                     true,
-                    false
-            );
+                    false);
 
             CategoryPlot plot = chart.getCategoryPlot();
             plot.setBackgroundPaint(Color.WHITE);
@@ -384,11 +381,15 @@ public class ChartsPanel extends JPanel {
     }
 
     private int calculateEfficiencyScore(double monthlyKWh) {
-        if (monthlyKWh < 1000) return 90 + (int)(Math.random() * 10);
-        if (monthlyKWh < 2000) return 75 + (int)(Math.random() * 15);
-        if (monthlyKWh < 3000) return 60 + (int)(Math.random() * 15);
-        if (monthlyKWh < 4000) return 45 + (int)(Math.random() * 15);
-        return 30 + (int)(Math.random() * 15);
+        if (monthlyKWh < 1000)
+            return 90 + (int) (Math.random() * 10);
+        if (monthlyKWh < 2000)
+            return 75 + (int) (Math.random() * 15);
+        if (monthlyKWh < 3000)
+            return 60 + (int) (Math.random() * 15);
+        if (monthlyKWh < 4000)
+            return 45 + (int) (Math.random() * 15);
+        return 30 + (int) (Math.random() * 15);
     }
 
     private JPanel createErrorPanel(String message) {

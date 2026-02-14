@@ -8,9 +8,9 @@ public class Main {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-            javax.swing.plaf.FontUIResource fontUIResource =
-                    new javax.swing.plaf.FontUIResource("Arial", java.awt.Font.PLAIN, 12);
-            Enumeration keys = UIManager.getDefaults().keys();
+            javax.swing.plaf.FontUIResource fontUIResource = new javax.swing.plaf.FontUIResource("Arial",
+                    java.awt.Font.PLAIN, 12);
+            Enumeration<Object> keys = UIManager.getDefaults().keys();
             while (keys.hasMoreElements()) {
                 Object key = keys.nextElement();
                 Object value = UIManager.get(key);
