@@ -62,7 +62,7 @@ public class LoginScreen extends JFrame {
 
         // Login button - Dark Blue
         loginButton.setBackground(new Color(0, 120, 215));
-        loginButton.setForeground(Color.WHITE);
+        loginButton.setForeground(Color.BLACK);
         loginButton.setFont(new Font("Arial", Font.BOLD, 14));
         loginButton.setFocusPainted(false);
         loginButton.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 100), 1));
@@ -71,7 +71,7 @@ public class LoginScreen extends JFrame {
 
         // Cancel button - Dark Red
         cancelButton.setBackground(new Color(200, 0, 0));
-        cancelButton.setForeground(Color.WHITE);
+        cancelButton.setForeground(Color.BLACK);
         cancelButton.setFont(new Font("Arial", Font.BOLD, 14));
         cancelButton.setFocusPainted(false);
         cancelButton.setBorder(BorderFactory.createLineBorder(new Color(100, 0, 0), 1));
